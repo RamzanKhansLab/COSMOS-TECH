@@ -2,6 +2,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../state/AuthContext.jsx";
 import { Badge, Btn } from "./Ui.jsx";
+import logoUrl from "../assets/cosmos-logo.svg";
 
 function Tab({ to, children }) {
   return (
@@ -27,7 +28,7 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/60 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-sky-400 via-purple-500 to-emerald-400 shadow-[0_0_35px_rgba(56,189,248,0.25)]" />
+          <img src={logoUrl} alt="COSMOS Tech" className="h-9 w-9" />
           <div className="leading-tight">
             <div className="text-sm font-extrabold tracking-wide">COSMOS Tech</div>
             <div className="text-xs text-slate-300">Electronics • Accessories • Components</div>
@@ -69,4 +70,5 @@ export default function NavBar() {
     </header>
   );
 }
+
 

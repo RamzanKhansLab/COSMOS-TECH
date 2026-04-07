@@ -42,7 +42,7 @@ async function seed() {
       category: "Keyboards",
       price: 4999,
       stock: 25,
-      imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=80"
+      imageUrl: "/products/keyboard.svg"
     },
     {
       sellerId: seller1._id,
@@ -52,7 +52,7 @@ async function seed() {
       category: "Mouse",
       price: 1999,
       stock: 60,
-      imageUrl: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=1200&q=80"
+      imageUrl: "/products/mouse.svg"
     },
     {
       sellerId: seller1._id,
@@ -62,7 +62,7 @@ async function seed() {
       category: "Accessories",
       price: 1799,
       stock: 45,
-      imageUrl: "https://images.unsplash.com/photo-1527434004202-81f8b8b6a5b2?w=1200&q=80"
+      imageUrl: "/products/hub.svg"
     },
     {
       sellerId: seller1._id,
@@ -72,7 +72,7 @@ async function seed() {
       category: "Chargers",
       price: 1499,
       stock: 80,
-      imageUrl: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1200&q=80"
+      imageUrl: "/products/charger.svg"
     },
     {
       sellerId: seller2._id,
@@ -82,7 +82,7 @@ async function seed() {
       category: "Laptops",
       price: 79999,
       stock: 10,
-      imageUrl: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&q=80"
+      imageUrl: "/products/laptop.svg"
     },
     {
       sellerId: seller2._id,
@@ -92,7 +92,7 @@ async function seed() {
       category: "Components",
       price: 2499,
       stock: 35,
-      imageUrl: "https://images.unsplash.com/photo-1587202372775-e03a05b5c6a9?w=1200&q=80"
+      imageUrl: "/products/cooler.svg"
     },
     {
       sellerId: seller2._id,
@@ -102,7 +102,7 @@ async function seed() {
       category: "Storage",
       price: 5799,
       stock: 40,
-      imageUrl: "https://images.unsplash.com/photo-1587202372583-49330a15584d?w=1200&q=80"
+      imageUrl: "/products/ssd.svg"
     },
     {
       sellerId: seller2._id,
@@ -112,7 +112,7 @@ async function seed() {
       category: "Monitors",
       price: 21999,
       stock: 12,
-      imageUrl: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200&q=80"
+      imageUrl: "/products/monitor.svg"
     },
     {
       sellerId: seller2._id,
@@ -122,7 +122,7 @@ async function seed() {
       category: "Headphones",
       price: 2999,
       stock: 28,
-      imageUrl: "https://images.unsplash.com/photo-1518441902117-f0a7ff6ff9db?w=1200&q=80"
+      imageUrl: "/products/headphones.svg"
     },
     {
       sellerId: seller1._id,
@@ -132,7 +132,7 @@ async function seed() {
       category: "Accessories",
       price: 1599,
       stock: 34,
-      imageUrl: "https://images.unsplash.com/photo-1616587226157-48e49175ee20?w=1200&q=80"
+      imageUrl: "/products/webcam.svg"
     },
     {
       sellerId: seller1._id,
@@ -142,7 +142,7 @@ async function seed() {
       category: "Cables",
       price: 399,
       stock: 120,
-      imageUrl: "https://images.unsplash.com/photo-1555617981-dac3880eac6b?w=1200&q=80"
+      imageUrl: "/products/cable.svg"
     },
     {
       sellerId: seller2._id,
@@ -152,7 +152,7 @@ async function seed() {
       category: "Networking",
       price: 1899,
       stock: 22,
-      imageUrl: "https://images.unsplash.com/photo-1600267165637-5c476b0d2c4a?w=1200&q=80"
+      imageUrl: "/products/router.svg"
     }
   ]);
 
@@ -214,3 +214,5 @@ seed()
   .finally(async () => {
     await mongoose.disconnect();
   });
+
+

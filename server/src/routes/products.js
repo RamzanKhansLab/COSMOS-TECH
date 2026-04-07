@@ -6,6 +6,24 @@ import { Review } from "../models/Review.js";
 
 export const productsRouter = express.Router();
 
+const productCreateSchema = z.object({
+  name: z.string().trim().min(2),
+  description: z.string().trim().min(10),
+  category: z.string().trim().min(2),
+  price: z.coerce.number().min(0),
+  stock: z.coerce.number().int().min(0),
+  imageUrl: z.string().optional()
+});
+
+const productUpdateSchema = z.object({
+  name: z.string().trim().min(2).optional(),
+  description: z.string().trim().min(10).optional(),
+  category: z.string().trim().min(2).optional(),
+  price: z.coerce.number().min(0).optional(),
+  stock: z.coerce.number().int().min(0).optional(),
+  imageUrl: z.string().optional()
+});
+
 productsRouter.get("/", async (req, res) => {
   const q = String(req.query.q || "").trim();
   const category = String(req.query.category || "").trim();
@@ -31,36 +49,21 @@ productsRouter.get("/:id", async (req, res) => {
 });
 
 productsRouter.post("/", requireAuth, requireRole("seller"), async (req, res) => {
-  const schema = z.object({
-    name: z.string().min(2),
-    description: z.string().min(10),
-    category: z.string().min(2),
-    price: z.number().min(0),
-    stock: z.number().min(0),
-    imageUrl: z.string().optional()
-  });
-  const parsed = schema.safeParse(req.body);
+  const parsed = productCreateSchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ message: "Invalid payload", issues: parsed.error.issues });
 
+  const data = parsed.data;
   const product = await Product.create({
-    ...parsed.data,
-    imageUrl: parsed.data.imageUrl || "",
+    ...data,
+    imageUrl: data.imageUrl || "",
     sellerId: req.auth.sub
   });
   return res.status(201).json({ product });
 });
 
 productsRouter.patch("/:id", requireAuth, requireRole("seller"), async (req, res) => {
-  const schema = z.object({
-    name: z.string().min(2).optional(),
-    description: z.string().min(10).optional(),
-    category: z.string().min(2).optional(),
-    price: z.number().min(0).optional(),
-    stock: z.number().min(0).optional(),
-    imageUrl: z.string().optional()
-  });
-  const parsed = schema.safeParse(req.body);
-  if (!parsed.success) return res.status(400).json({ message: "Invalid payload" });
+  const parsed = productUpdateSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ message: "Invalid payload", issues: parsed.error.issues });
 
   const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).json({ message: "Product not found" });
@@ -75,9 +78,8 @@ productsRouter.delete("/:id", requireAuth, requireRole("seller"), async (req, re
   const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).json({ message: "Product not found" });
   if (String(product.sellerId) !== String(req.auth.sub)) return res.status(403).json({ message: "Forbidden" });
-  if (Number(product.stock || 0) > 0) return res.status(400).json({ message: "Only out-of-stock products can be deleted" });
-
-  await Review.deleteMany({ productId: product._id });
+await Review.deleteMany({ productId: product._id });
   await Product.deleteOne({ _id: product._id });
   return res.json({ ok: true });
 });
+

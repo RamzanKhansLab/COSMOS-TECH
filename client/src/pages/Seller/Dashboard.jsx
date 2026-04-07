@@ -32,8 +32,7 @@ export default function SellerDashboard() {
   }, []);
 
   async function deleteProduct(p) {
-    if (Number(p.stock || 0) > 0) return;
-    const ok = window.confirm(`Delete "${p.name}" from COSMOS Tech? This cannot be undone.`);
+        const ok = window.confirm(`Delete "${p.name}" from COSMOS Tech? This cannot be undone.`);
     if (!ok) return;
 
     try {
@@ -81,7 +80,7 @@ export default function SellerDashboard() {
           <Card className="p-5">
             <div>
               <div className="text-lg font-extrabold">Products</div>
-              <div className="mt-1 text-xs text-slate-400">Delete is enabled only when stock is 0 (offline/out of stock).</div>
+              <div className="mt-1 text-xs text-slate-400">Delete removes the product even if your offline stock is different (use carefully).</div>
             </div>
             <div className="mt-3 space-y-3">
               {products.map((p) => (
@@ -98,7 +97,7 @@ export default function SellerDashboard() {
                     </Link>
                     <Btn
                       variant="danger"
-                      disabled={Number(p.stock || 0) > 0 || busyId === p._id}
+                      disabled={busyId === p._id}
                       onClick={() => deleteProduct(p)}
                       className="whitespace-nowrap"
                     >
@@ -134,3 +133,4 @@ export default function SellerDashboard() {
     </Shell>
   );
 }
+

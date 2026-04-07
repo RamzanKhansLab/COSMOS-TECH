@@ -63,3 +63,12 @@ Register from the UI. Sellers can create products; customers can buy/review.
 - `client/` React (Vite) + Tailwind UI
 
 
+
+## GitHub
+Repository: https://github.com/RamzanKhansLab/COSMOS-TECH
+
+## Deployment (single server)
+1) Build client: npm run build
+2) Set server NODE_ENV=production and CORS_ORIGIN to your domain
+3) Start server: npm run start
+

@@ -81,7 +81,7 @@ export default function Home() {
         <div className="mb-8 grid gap-4 md:grid-cols-3">
           <Card className="relative overflow-hidden p-5">
             <img
-              src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&q=80"
+              src="/products/keyboard.svg"
               alt="Setup"
               className="absolute inset-0 h-full w-full object-cover opacity-30"
             />
@@ -94,7 +94,7 @@ export default function Home() {
 
           <Card className="relative overflow-hidden p-5">
             <img
-              src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80"
+              src="/products/cooler.svg"
               alt="Components"
               className="absolute inset-0 h-full w-full object-cover opacity-30"
             />
@@ -107,7 +107,7 @@ export default function Home() {
 
           <Card className="relative overflow-hidden p-5">
             <img
-              src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=1200&q=80"
+              src="/products/headphones.svg"
               alt="Audio"
               className="absolute inset-0 h-full w-full object-cover opacity-30"
             />
@@ -132,6 +132,7 @@ export default function Home() {
     </Shell>
   );
 }
+
 
 
 

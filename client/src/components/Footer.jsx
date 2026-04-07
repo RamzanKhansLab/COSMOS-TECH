@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import { Link } from "react-router-dom";
+import logoUrl from "../assets/cosmos-logo.svg";
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 md:grid-cols-4">
         <div className="space-y-3 md:col-span-2">
           <div className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-sky-400 via-purple-500 to-emerald-400 shadow-[0_0_35px_rgba(56,189,248,0.22)]" />
+            <img src={logoUrl} alt="COSMOS Tech" className="h-9 w-9" />
             <div>
               <div className="text-sm font-extrabold tracking-wide">COSMOS Tech</div>
               <div className="text-xs text-slate-300">A modern full-stack electronics marketplace</div>
@@ -25,7 +26,7 @@ export default function Footer() {
             <Link className="block hover:text-white" to="/about">
               About us
             </Link>
-            <a className="block hover:text-white" href="https://github.com/cosmos-tech/cosmos-techmart" target="_blank" rel="noreferrer">
+            <a className="block hover:text-white" href="https://github.com/RamzanKhansLab/COSMOS-TECH" target="_blank" rel="noreferrer">
               GitHub (project)
             </a>
             <a className="block hover:text-white" href="mailto:support@cosmostech.example">
@@ -53,3 +54,4 @@ export default function Footer() {
     </footer>
   );
 }
+
