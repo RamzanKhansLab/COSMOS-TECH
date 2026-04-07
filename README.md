@@ -72,3 +72,9 @@ Repository: https://github.com/RamzanKhansLab/COSMOS-TECH
 2) Set server NODE_ENV=production and CORS_ORIGIN to your domain
 3) Start server: npm run start
 
+
+## Fix broken images
+If older products have broken/remote image URLs, run:
+`ash
+npm run fix:images -w server
+`\r\n
