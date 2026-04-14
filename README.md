@@ -78,3 +78,30 @@ If older products have broken/remote image URLs, run:
 `ash
 npm run fix:images -w server
 `\r\n
+
+## Render Deployment (recommended)
+
+This repo is set up for a **single Render Web Service**:
+- React is built to client/dist
+- Express serves the static build when NODE_ENV=production
+
+### Render settings
+- **Build Command:** 
+pm install && npm run build
+- **Start Command:** 
+pm run start
+
+### Render environment variables (Server)
+Set these in Render Dashboard → Environment:
+- NODE_ENV=production
+- PORT=10000
+- MONGODB_URI=... (MongoDB Atlas)
+- JWT_SECRET=...
+- ADMIN_CREDS=email:password,email2:password2
+- CORS_ORIGIN=https://<your-service>.onrender.com
+
+### Client API URL on Render
+For a single-service deployment, the frontend calls the backend at the same domain.
+- Set VITE_API_URL to empty in the Render environment (or build with it empty) so requests go to /api.
+
+Tip: A ender.yaml blueprint is included at ender.yaml.

@@ -1,0 +1,25 @@
+﻿# Render Blueprint (optional)
+# Deploy as a single Web Service (Express serves the built React app in production)
+services:
+  - type: web
+    name: cosmos-tech
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: ADMIN_CREDS
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
